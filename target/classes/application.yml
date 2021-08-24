@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    active: debug
+  datasource:
+    username: ENC(zZDCIPdsiJvPxheb9RnpgQ==)
+    password: ENC(kWD9tKXvFNAaT9E+zMcc7A==)
+    url: jdbc:mysql://192.168.100.17:3306/ans?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#===========================JPA===================
+  jpa:
+    database: MYSQL
+    show-sql : true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.DefaultNamingStrategy
+    properties:
+      hibernate:
+        dialect:  org.hibernate.dialect.MySQL5InnoDBDialect
+#==============================FileUp=========================
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 30MB
+---
+server:
+  port: 8010
+spring:
+  profiles: dev
+---
+server:
+  port: 8012
+spring:
+  profiles: debug
+
+jasypt:
+  encryptor:
+    password: hhip
+
