@@ -19,6 +19,7 @@ class HhipApplicationTests {
 //        System.out.println(username);
 //        String password =encryptor.encrypt("");
 //        System.out.println(password);
+        //git提交测试
     }
 
 }
