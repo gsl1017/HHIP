@@ -6,7 +6,7 @@ spring:
     password: ENC(kWD9tKXvFNAaT9E+zMcc7A==)
     url: jdbc:mysql://192.168.100.17:3306/ans?useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
-#===========================JPA===================
+  #===========================JPA===================
   jpa:
     database: MYSQL
     show-sql : true
@@ -24,11 +24,16 @@ spring:
 ---
 server:
   port: 8010
+  servlet:
+    context-path: /api
 spring:
   profiles: dev
 ---
 server:
   port: 8012
+  servlet:
+    context-path: /api
+
 spring:
   profiles: debug
 
