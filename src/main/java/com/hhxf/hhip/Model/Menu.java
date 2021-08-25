@@ -7,8 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="user")
-@AllArgsConstructor
-@NoArgsConstructor
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
