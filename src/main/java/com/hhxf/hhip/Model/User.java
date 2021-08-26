@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * user 实体类
@@ -12,25 +13,17 @@ import javax.persistence.*;
 @Table(name="user")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User{
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private String id;
-    @Column(name="account")
     private String account;
-    @Column(name="username")
     private String username;
-    @Column(name="pwd")
     private String pwd;
-    @Column(name="creattime")
     private String creattime;
-    @Column(name="creatuserid")
     private String creatuserid;
-    @Column(name="state")
     private Integer state;
-    @Column(name="menus")
     private String menus;
 
     public String getId() {

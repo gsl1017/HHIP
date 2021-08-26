@@ -27,9 +27,9 @@ public class UserController {
         return userService.save(user);
     }
 
-    @GetMapping("/login")//RequestParam 获取查询参数
-    public Result Login(@RequestParam String account,String pwd){
-        return userService.Login(account,pwd);
+    @PostMapping("/login")//RequestParam 获取查询参数
+    public Result Login(@RequestBody User user){
+        return userService.Login(user.getAccount(),user.getPwd());
     }
 
     @GetMapping("/get/{id}")//PathVariable 获取路径参数
