@@ -4,6 +4,7 @@ import com.hhxf.hhip.Impl.UserDao;
 import com.hhxf.hhip.Model.User;
 import com.hhxf.hhip.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,11 @@ public class UserServiceImpl implements UserService {
     @Resource
     UserDao userDao;
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    @Qualifier("secondaryJdbcTemplate")
+    JdbcTemplate secondaryJdbcTemplate;
+    @Autowired
+    @Qualifier("primaryJdbcTemplate")
+    JdbcTemplate primaryJdbcTemplate;
 
     @Override
     public Result save(User user){
@@ -25,20 +30,24 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public Result queryAll(){
-        List<User> list=userDao.findAll();
-        return new Result(list);
+        String sql="select * from user";
+        List<Map<String,Object>> maps= primaryJdbcTemplate.queryForList(sql);
+        return new Result(maps);
     }
+
+    @Override
+    public Result queryOracleUser(){
+        String sql="select * from t_bd_person where fnumber='305132'";
+        List<Map<String,Object>> maps= secondaryJdbcTemplate.queryForList(sql);
+        return new Result(maps);
+    }
+
     @Override
     public Result getById(String id)
     {
         List<User> list=userDao.getUserById(id);
         return new Result(list);
     }
-//    @Override
-//    public Result getByAccountAndPwd(String account,String pwd){
-//        List<User> list=userDao.getByAccountAndPwd(account,pwd);
-//        return new Result(list);
-//    }
 
     @Override
     public User getByAccount(String account){

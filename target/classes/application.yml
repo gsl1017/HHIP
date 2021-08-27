@@ -2,13 +2,21 @@ spring:
   profiles:
     active: debug
   datasource:
-    username: ENC(zZDCIPdsiJvPxheb9RnpgQ==)
-    password: ENC(kWD9tKXvFNAaT9E+zMcc7A==)
-    url: jdbc:mysql://192.168.100.17:3306/ans?useUnicode=true&characterEncoding=utf-8
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    primary:
+      username: ENC(zZDCIPdsiJvPxheb9RnpgQ==)
+      password: ENC(kWD9tKXvFNAaT9E+zMcc7A==)
+      jdbc-url: jdbc:mysql://192.168.100.17:3306/ans?useUnicode=true&characterEncoding=utf-8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    second:
+      username: ENC(SdiHVWLxaqzE7Mm8G/nX6g==)
+      password: ENC(KiN2qccATbba9Uo8k7PnjA==)
+      jdbc-url: jdbc:oracle:thin:@192.168.100.33:1521:hhxf
+      driver-class-name: oracle.jdbc.OracleDriver
+
+
   #===========================JPA===================
   jpa:
-    database: MYSQL
+#    database: MYSQL
     show-sql : true
     hibernate:
       ddl-auto: update

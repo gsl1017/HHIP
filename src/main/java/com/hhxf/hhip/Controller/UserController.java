@@ -31,6 +31,12 @@ public class UserController {
         Result cc=userService.queryAll();
         return cc;
     }
+
+    @GetMapping("/queryuser")
+    public Result queryOracleUser(){
+        return userService.queryOracleUser();
+    }
+
     @PostMapping("/save")//RequestBody 获取对象参数
     public Result saveUser(@RequestBody User user) {
         return userService.save(user);

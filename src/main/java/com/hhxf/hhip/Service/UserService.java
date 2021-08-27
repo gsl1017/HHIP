@@ -9,6 +9,8 @@ public interface UserService {
 
     Result queryAll();
 
+    Result queryOracleUser();
+
     Result getById(String id);
 
     User getByAccount(String account);

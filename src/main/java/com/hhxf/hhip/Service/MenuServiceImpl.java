@@ -6,6 +6,7 @@ import com.hhxf.hhip.Model.Menu;
 import com.hhxf.hhip.Model.User;
 import com.hhxf.hhip.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,11 @@ public class MenuServiceImpl implements MenuService {
     UserDao userDao;
     @Resource
     MenuDao menuDao;
+
     @Autowired
+    @Qualifier("primaryJdbcTemplate")
     JdbcTemplate jdbcTemplate;
+
     @Override
     public Result getListByuserid(String userid){
         List<Menu> menuls=new ArrayList<>();
