@@ -7,6 +7,8 @@ import com.hhxf.hhip.Model.User;
 import com.hhxf.hhip.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +51,11 @@ public class MenuServiceImpl implements MenuService {
     public Result queryAll(){
         List<Menu> list=menuDao.findAll();
         return new Result(list);
+    }
+
+    @Override
+    public Result findByIdPageable(Pageable pageable) {
+        Page<Menu> page=menuDao.findByIdPageable(pageable);
+        return new Result(page);
     }
 }

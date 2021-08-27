@@ -3,6 +3,7 @@ package com.hhxf.hhip.Controller;
 import com.hhxf.hhip.Service.MenuService;
 import com.hhxf.hhip.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,5 +26,11 @@ public class MenuController {
     public Result queryAll(){
         Result cc=menuService.queryAll();
         return cc;
+    }
+
+    @GetMapping("/pageList")
+    public Result findByIdPageable(Pageable pageable){
+        System.out.println("页码"+pageable.getPageNumber()+"条数"+pageable.getPageSize());
+        return menuService.findByIdPageable(pageable);
     }
 }
