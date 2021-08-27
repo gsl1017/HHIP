@@ -34,18 +34,25 @@ public class UserServiceImpl implements UserService {
         List<User> list=userDao.getUserById(id);
         return new Result(list);
     }
+//    @Override
+//    public Result getByAccountAndPwd(String account,String pwd){
+//        List<User> list=userDao.getByAccountAndPwd(account,pwd);
+//        return new Result(list);
+//    }
+
     @Override
-    public Result getByAccountAndPwd(String account,String pwd){
-        List<User> list=userDao.getByAccountAndPwd(account,pwd);
-        return new Result(list);
+    public User getByAccount(String account){
+        User list=userDao.getByAccount(account);
+        return list;
     }
-    @Override
-    public Result Login(String account,String pwd){
-        String sql="select * from user where account='"+account+"' and pwd=password('"+pwd+"') and state=1";
-//                "select * from user where account='\" +account + \"' and pwd=password('\" + pwd + \"') and state=1";
-        List<Map<String,Object>> maps= jdbcTemplate.queryForList(sql);
-        System.out.println(sql);
-        System.out.println(maps);
-        return new Result(maps);
-    }
+
+//    @Override
+//    public Result Login(String account,String pwd){
+//        String sql="select * from user where account='"+account+"' and pwd=password('"+pwd+"') and state=1";
+////                "select * from user where account='\" +account + \"' and pwd=password('\" + pwd + \"') and state=1";
+//        List<Map<String,Object>> maps= jdbcTemplate.queryForList(sql);
+//        System.out.println(sql);
+//        System.out.println(maps);
+//        return new Result(maps);
+//    }
 }

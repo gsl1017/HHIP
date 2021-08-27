@@ -11,8 +11,10 @@ public interface UserService {
 
     Result getById(String id);
 
-    Result getByAccountAndPwd(String account,String pwd);
+    User getByAccount(String account);
 
-    Result Login(String account,String pwd);
+//    Result getByAccountAndPwd(String account,String pwd);
+
+//    Result Login(String account,String pwd);
 
 }
